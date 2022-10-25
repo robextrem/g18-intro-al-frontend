@@ -8,9 +8,7 @@ class App extends Component {
 
   state = {
     count: 0,
-    age: 29,
-    city: "Qro",
-    date: "24/oct/2022",
+    isDarkMode: false,
   };
 
   render() {
@@ -18,16 +16,22 @@ class App extends Component {
     const day = "Lunes";
 
     const greetings = () => {
-      return (
-        <div>
-          <p> Saludos desde mi funcion </p>
-        </div>
-      );
+      if (this.state.count >= 18) {
+        return <p> Eres mayor de edad 🍻</p>;
+      } else return <p> Eres un adolescente </p>;
     };
 
-    const styleObject = {
-      fontSize: "14px",
-      borderStyle: "none",
+    const darkModeOff = {
+      fontSize: 55,
+      borderStyle: "inset",
+      color: "black",
+      backgroundColor: "white",
+    };
+
+    const darkmodeOn = {
+      fontSize: 55,
+      borderStyle: "inset",
+      color: "orange",
     };
 
     // 3.- Regresar JSX
@@ -35,13 +39,32 @@ class App extends Component {
       <div className="App">
         <h5>Hola mundo </h5>
 
-        {/* ESTILOS Se maneja através de objetos
-        Se usa camelCase */}
-        <div className="card" style={{ fontSize: 35, borderStyle: "inset" }}>
+        {/* ESTILOS 
+          Se maneja através de objetos
+          Se usa camelCase */}
+        <div
+          className="card"
+          style={this.state.isDarkMode ? darkmodeOn : darkModeOff}
+        >
           {/* SINTAXIS para acceder a valores de JS {} */}
           <span>Esta es la generacion {name} </span>
           <h4>& hoy es el dia {day}</h4>
-          {greetings()}
+
+          {/* Conditional rendering IF */}
+          {/* 1ER ESCENARIO if() {}  👇🏽*/}
+          {/* {this.state.count >= 18 && (
+            <p>Eres mayor de edad con conditonal rendering 🍻</p>
+          )} */}
+
+          {/* 2DO ESCENARIO if() {} else {} 👇🏽*/}
+          {/* SINTAXIS DE TERNARIO condicion ? bloqueParaTrue : bloqueParaFalse */}
+          {this.state.count >= 18 ? (
+            <p>Eres mayor de edad con conditonal rendering 🍻</p>
+          ) : (
+            <p>Eres un adolescente 🎮</p>
+          )}
+
+          {/* {greetings()} */}
 
           {/* para setear estados se usa 
             this.setState({ name: newValue}) 
@@ -52,7 +75,6 @@ class App extends Component {
           >
             Incrementar
           </button>
-
           <button
             onClick={() => this.setState({ count: this.state.count - 1 })}
           >
