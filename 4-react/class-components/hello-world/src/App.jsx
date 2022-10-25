@@ -49,13 +49,11 @@ class App extends Component {
           {/* SINTAXIS para acceder a valores de JS {} */}
           <span>Esta es la generacion {name} </span>
           <h4>& hoy es el dia {day}</h4>
-
           {/* Conditional rendering IF */}
           {/* 1ER ESCENARIO if() {}  👇🏽*/}
           {/* {this.state.count >= 18 && (
             <p>Eres mayor de edad con conditonal rendering 🍻</p>
           )} */}
-
           {/* 2DO ESCENARIO if() {} else {} 👇🏽*/}
           {/* SINTAXIS DE TERNARIO condicion ? bloqueParaTrue : bloqueParaFalse */}
           {this.state.count >= 18 ? (
@@ -63,9 +61,7 @@ class App extends Component {
           ) : (
             <p>Eres un adolescente 🎮</p>
           )}
-
           {/* {greetings()} */}
-
           {/* para setear estados se usa 
             this.setState({ name: newValue}) 
           */}
@@ -79,6 +75,16 @@ class App extends Component {
             onClick={() => this.setState({ count: this.state.count - 1 })}
           >
             Decrementar
+          </button>
+          <br />
+          <br />
+
+          <button
+            onClick={() =>
+              this.setState({ isDarkMode: !this.state.isDarkMode })
+            }
+          >
+            Cambiar estilo de plantilla
           </button>
         </div>
       </div>
