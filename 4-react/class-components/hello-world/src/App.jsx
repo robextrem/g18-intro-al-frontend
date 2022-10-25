@@ -1,5 +1,4 @@
 import { Component } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 
 // 1.- Class component
@@ -8,10 +7,11 @@ class App extends Component {
   // 2.- Mandar llamar a render ()
 
   state = {
-    count: 11,
+    count: 0,
+    age: 29,
+    city: "Qro",
+    date: "24/oct/2022",
   };
-
-  l;
 
   render() {
     const name = "g18";
@@ -28,28 +28,22 @@ class App extends Component {
     // 3.- Regresar JSX
     return (
       <div className="App">
-        <div>
-          <h5>Hola mundo</h5>
-          <a href="https://reactjs.org" target="_blank">
-            <img src={reactLogo} className="logo react" alt="React logo" />
-          </a>
-        </div>
-        <h1>Gb18</h1>
+        <h5>Hola mundo</h5>
+
         <div className="card">
           {/* SINTAXIS para acceder a valores de JS {} */}
-          count is {this.state.count}
           <span>Esta es la generacion {name} </span>
           <h4>& hoy es el dia {day}</h4>
           {greetings()}
-          {/* <button onClick={() => setCount((count) => count + 1)}>
-      </button> */}
-          <p>
-            Edit <code>src/App.jsx</code> and save to test HMR !!!!!!
-          </p>
+          {/* para setear estados se usa 
+            this.setState({ name: newValue}) 
+          */}
+          <button
+            onClick={() => this.setState({ count: this.state.count + 1 })}
+          >
+            valor de contador is {this.state.count}
+          </button>
         </div>
-        <p className="read-the-docs">
-          Click on the Vite and React logos to learn more
-        </p>
       </div>
     );
   }
