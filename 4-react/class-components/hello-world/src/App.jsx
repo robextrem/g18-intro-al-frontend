@@ -6,7 +6,25 @@ import "./App.css";
 // extender de Component
 class App extends Component {
   // 2.- Mandar llamar a render ()
+
+  state = {
+    count: 11,
+  };
+
+  l;
+
   render() {
+    const name = "g18";
+    const day = "Lunes";
+
+    const greetings = () => {
+      return (
+        <div>
+          <p> Saludos desde mi funcion </p>
+        </div>
+      );
+    };
+
     // 3.- Regresar JSX
     return (
       <div className="App">
@@ -18,9 +36,13 @@ class App extends Component {
         </div>
         <h1>Gb18</h1>
         <div className="card">
+          {/* SINTAXIS para acceder a valores de JS {} */}
+          count is {this.state.count}
+          <span>Esta es la generacion {name} </span>
+          <h4>& hoy es el dia {day}</h4>
+          {greetings()}
           {/* <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button> */}
+      </button> */}
           <p>
             Edit <code>src/App.jsx</code> and save to test HMR !!!!!!
           </p>
@@ -32,11 +54,5 @@ class App extends Component {
     );
   }
 }
-
-// function App() {
-//   // functional component
-//   const [count, setCount] = useState(0);
-
-// }
 
 export default App;
