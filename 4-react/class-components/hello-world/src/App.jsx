@@ -7,7 +7,8 @@ class App extends Component {
   // 2.- Mandar llamar a render ()
 
   state = {
-    count: 0,
+    count1: 0,
+    count2: 10,
     isDarkMode: false,
   };
 
@@ -65,14 +66,20 @@ class App extends Component {
           {/* para setear estados se usa 
             this.setState({ name: newValue}) 
           */}
-          <p>El valor actual del contador es: {this.state.count}</p>
+          <p>El valor actual del contador 1 es: {this.state.count1}</p>
           <button
-            onClick={() => this.setState({ count: this.state.count + 1 })}
+            onClick={() => this.setState({ count1: this.state.count1 + 1 })}
           >
             Incrementar
           </button>
+
+          <br />
+          <br />
+          <br />
+
+          <p>El valor actual del contador 2 es: {this.state.count2}</p>
           <button
-            onClick={() => this.setState({ count: this.state.count - 1 })}
+            onClick={() => this.setState({ count2: this.state.count2 - 1 })}
           >
             Decrementar
           </button>
