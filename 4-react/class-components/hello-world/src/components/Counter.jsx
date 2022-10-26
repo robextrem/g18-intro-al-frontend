@@ -2,16 +2,20 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {};
-
+  /**
+   * IMPORTANTE
+   *
+   * PADRE - HIJO son ATRIBUTOS this.props.count1
+   * HIJO - PADRE son METODOS this.props.increment()
+   */
   render() {
     console.log("props", this.props);
 
     return (
       <div>
-        <p>El valor actual del contador 1 es: {this.props.count1} </p>
-        <button
-          onClick={() => this.setState({ count1: this.state.count1 + 1 })}
-        >
+        <p>El valor actual del contador 1 es: {this.props.counterProp1} </p>
+
+        <button onClick={() => this.props.manejarIncrementar()}>
           Incrementar
         </button>
 
@@ -19,12 +23,8 @@ class Counter extends Component {
         <br />
         <br />
 
-        <p>El valor actual del contador 2 es: {this.props.count2}</p>
-        <button
-          onClick={() => this.setState({ count2: this.state.count2 - 1 })}
-        >
-          Decrementar
-        </button>
+        <p>El valor actual del contador 2 es: {this.props.counterProp2}</p>
+        <button onClick={() => console.log("decrementar")}>Decrementar</button>
         <br />
       </div>
     );

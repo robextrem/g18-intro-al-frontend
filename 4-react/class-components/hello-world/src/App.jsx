@@ -68,7 +68,14 @@ class App extends Component {
             this.setState({ name: newValue}) 
           */}
 
-          <Counter count1={this.state.count1} count2={this.state.count2} />
+          <Counter
+            // nombreProperty = value
+            counterProp1={this.state.count1}
+            counterProp2={this.state.count2}
+            manejarIncrementar={() =>
+              this.setState({ count1: this.state.count1 + 1 })
+            }
+          />
 
           <br />
           <button
