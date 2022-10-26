@@ -68,7 +68,7 @@ class App extends Component {
             this.setState({ name: newValue}) 
           */}
 
-          <Counter />
+          <Counter count1={this.state.count1} count2={this.state.count2} />
 
           <br />
           <button
