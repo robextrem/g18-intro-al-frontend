@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-class Counters extends Component {
+class Counter extends Component {
   render() {
     return (
       <div>
-        <p>El valor actual del contador 1 es: {this.state.count1}</p>
+        <p>El valor actual del contador 1 es: </p>
         <button
           onClick={() => this.setState({ count1: this.state.count1 + 1 })}
         >
@@ -15,7 +15,7 @@ class Counters extends Component {
         <br />
         <br />
 
-        <p>El valor actual del contador 2 es: {this.state.count2}</p>
+        <p>El valor actual del contador 2 es: </p>
         <button
           onClick={() => this.setState({ count2: this.state.count2 - 1 })}
         >
@@ -27,4 +27,4 @@ class Counters extends Component {
   }
 }
 
-export default Counters;
+export default Counter;

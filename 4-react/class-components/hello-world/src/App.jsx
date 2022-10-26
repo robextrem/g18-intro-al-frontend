@@ -1,5 +1,6 @@
 import { Component } from "react";
 import "./App.css";
+import Counter from "./components/Counter";
 
 // 1.- Class component
 // extender de Component
@@ -66,26 +67,10 @@ class App extends Component {
           {/* para setear estados se usa 
             this.setState({ name: newValue}) 
           */}
-          <p>El valor actual del contador 1 es: {this.state.count1}</p>
-          <button
-            onClick={() => this.setState({ count1: this.state.count1 + 1 })}
-          >
-            Incrementar
-          </button>
+
+          <Counter />
 
           <br />
-          <br />
-          <br />
-
-          <p>El valor actual del contador 2 es: {this.state.count2}</p>
-          <button
-            onClick={() => this.setState({ count2: this.state.count2 - 1 })}
-          >
-            Decrementar
-          </button>
-          <br />
-          <br />
-
           <button
             onClick={() =>
               this.setState({ isDarkMode: !this.state.isDarkMode })
