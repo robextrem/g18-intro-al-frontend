@@ -20,16 +20,19 @@ class List extends Component{
 
     render(){
         return(
-            
-        <div className="container">
-            <div className="columns is-multiline">
-                {
-                    this.state.pokemones.map(pokemon => {
-                        return (<Pokemon key={pokemon.id} image={pokemon.ThumbnailImage} name={pokemon.name}></Pokemon>)
-                    })   
-                }
+            <div className="container">
+               <div class="mb-5">
+                    <input type="text" placeholder="Buscar..." className="input"></input>
+               </div>
+                <div className="columns is-multiline">
+                    {
+                        this.state.pokemones.map(pokemon => {
+                            return (<Pokemon key={pokemon.id} image={pokemon.ThumbnailImage} name={pokemon.name}></Pokemon>)
+                        })   
+                    }
+                </div>
             </div>
-        </div>)
+        )
     }
 
 }
