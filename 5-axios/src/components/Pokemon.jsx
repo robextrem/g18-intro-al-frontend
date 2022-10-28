@@ -8,7 +8,7 @@ class Pokemon extends Component {
         <div className="column is-3">
           <div
             className="card"
-            onClick={() => this.props.getPokemon(this.props.name)}
+            onClick={() => this.props.getPokemon(this.props.name.toLowerCase())}
           >
             <div className="card-image">
               <figure className="image">
