@@ -3,7 +3,7 @@ import { Component, Fragment } from "react";
 class Pokemon extends Component{
     
     render(){
-        console.log(this.props);
+        //console.log(this.props);
         return(
             <Fragment>
                 <div className="column is-3">
