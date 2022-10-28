@@ -13,6 +13,7 @@ class List extends Component{
         super(props);
         // This binding is necessary to make `this` work in the callback
         this.buscar = this.buscar.bind(this);
+        this.agua = this.agua.bind(this);
     }
 
     componentDidMount(){        
@@ -27,12 +28,18 @@ class List extends Component{
 
     buscar(event){
         let q = event.currentTarget.value.toLowerCase();
-        let resultados = this.state.pokemones.filter((pokemon) =>{
+        let filtrados = this.state.pokemones.filter((pokemon) =>{
             return pokemon.name.toLowerCase().includes(q);
         });
+        this.setState({resultados: filtrados});
+        //console.log(resultados);
+    }
 
-        this.setState({resultados: resultados});
-
+    agua(event){
+        let filtrados = this.state.pokemones.filter((pokemon) =>{
+            return pokemon.type.includes("water");
+        });
+        this.setState({resultados: filtrados});
         //console.log(resultados);
     }
 
@@ -43,6 +50,7 @@ class List extends Component{
                <div className="mb-5">
                     <input onKeyUp={this.buscar} type="text" placeholder="Buscar..." className="input"></input>
                </div>
+               <button onClick={this.agua} className="button is-link">Ver pokemones AGUA</button>
                 <div className="columns is-multiline">
                     {
                         this.state.resultados.map(pokemon => {
