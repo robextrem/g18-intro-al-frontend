@@ -35,7 +35,7 @@ class List extends Component {
   }
 
   /*
-   * ya con el nombre consumir API
+   * ya con el nombre consumir API 👀
    * regresa ingo y la guardamos en state
    * Y mandar ese state al componente List
    */
@@ -47,12 +47,19 @@ class List extends Component {
     });
 
     this.setState({ resultados: resultados });
-
-    //console.log(resultados);
   }
 
   getPokemonInfo(name) {
-    console.log("name", name);
+    const BASE_URL = "https://pokeapi.co/api/v2/";
+
+    axios
+      .get(`${BASE_URL}pokemon/name`)
+      .then((data) => {
+        console.log("respuesta POKEAPI", data);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
   }
 
   render() {
