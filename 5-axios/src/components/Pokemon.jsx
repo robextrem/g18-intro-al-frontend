@@ -5,7 +5,7 @@ class Pokemon extends Component {
     //console.log(this.props);
     return (
       <Fragment>
-        <div className="column is-3">
+        <div className="column is-3 ">
           <div
             className="card"
             onClick={() => this.props.getPokemon(this.props.name.toLowerCase())}
