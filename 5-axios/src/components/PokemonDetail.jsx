@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class PokemonDetail extends Component {
   componentWillUnmount() {
-    alert("se destruye componente");
+    console.log("se destruye componente");
   }
 
   render() {
