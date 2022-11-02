@@ -3,9 +3,8 @@ import axios from "axios";
 import "./App.css";
 
 const App = () => {
-  const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
-
+  // const [user, setUser] = useState("");
+  // const [password, setPassword] = useState("");
   const [credentials, setCredentials] = useState({});
 
   const USER_HARDCODED = "userG18";
@@ -23,30 +22,17 @@ const App = () => {
      *    password: valorInputPassword
      * }
      */
-
-    setCredentials({ [name]: value });
+    setCredentials({ ...credentials, [name]: value });
   };
 
   const submitForm = async () => {
     // Simular peticion al backend
-    // if (user === USER_HARDCODED && password === PASSWORD_HARDCODED) {
-    //   console.log("login exitoso");
-    // } else console.log("NO PASA");
-
-    const objectLogin = {
-      email: user,
-      role,
-      gender,
-      password,
-      first_name,
-      las,
-    };
-
-    const result = await axios.post(
-      "https://ecomerce-master.herokuapp.com/api/v1/login",
-      objectLogin
-    );
-    console.log("result", result);
+    if (
+      credentials.user === USER_HARDCODED &&
+      credentials.password === PASSWORD_HARDCODED
+    ) {
+      console.log("login exitoso");
+    } else console.log("NO PASA ");
   };
 
   return (
