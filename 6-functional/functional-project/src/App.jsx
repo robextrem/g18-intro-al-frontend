@@ -1,21 +1,54 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import "./App.css";
 
 const App = () => {
   const [user, setUser] = useState("");
-  const [passsword, setPassword] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [credentials, setCredentials] = useState({});
+
+  const USER_HARDCODED = "userG18";
+  const PASSWORD_HARDCODED = "12345";
+
+  useEffect(() => {
+    console.log("nuevo valor", credentials);
+  }, [credentials]); // [props || states]
 
   const handleInputValue = ({ target: { value, name } }) => {
-    name === "user" ? setUser(value) : setPassword(value);
+    /**
+     * const objectState =
+     * {
+     *    email: valorInput,
+     *    password: valorInputPassword
+     * }
+     */
+
+    setCredentials({ [name]: value });
   };
 
-  const handleInputPassword = ({ target: { value, name } }) => {
-    console.log("valor ", value);
-    console.log("name P ", name);
-    setPassword(value);
+  const submitForm = async () => {
+    // Simular peticion al backend
+    // if (user === USER_HARDCODED && password === PASSWORD_HARDCODED) {
+    //   console.log("login exitoso");
+    // } else console.log("NO PASA");
+
+    const objectLogin = {
+      email: user,
+      role,
+      gender,
+      password,
+      first_name,
+      las,
+    };
+
+    const result = await axios.post(
+      "https://ecomerce-master.herokuapp.com/api/v1/login",
+      objectLogin
+    );
+    console.log("result", result);
   };
 
-  // user === 'usuarioG18' & password === '12345'
   return (
     <div className="App">
       <h3>Login app fake 🤡</h3>
@@ -28,7 +61,7 @@ const App = () => {
             type="text"
             name="user"
             onChange={handleInputValue}
-            value={user}
+            value={credentials.user}
           />
         </div>
 
@@ -38,12 +71,12 @@ const App = () => {
           <input
             type="password"
             name="password"
-            value={passsword}
-            onChange={handleInputPassword}
+            value={credentials.password}
+            onChange={handleInputValue}
           />
         </div>
 
-        <button> Enviar</button>
+        <button onClick={() => submitForm()}> Enviar</button>
       </div>
     </div>
   );
