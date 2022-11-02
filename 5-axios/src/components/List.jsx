@@ -7,6 +7,7 @@ class List extends Component {
     pokemones: [],
     resultados: [],
     pokemonInfo: {},
+    namePokemon: "",
   };
 
   constructor(props) {
@@ -30,6 +31,17 @@ class List extends Component {
       });
   }
 
+  //PreviousProps, PreviousState
+  componentDidUpdate(prevProps, prevState) {
+    // console.log("prevProps", prevProps);
+    console.log("prevState", prevState.namePokemon);
+    console.log("actual state namePokemon", this.state.namePokemon);
+
+    if (prevState.namePokemon !== this.state.namePokemon) {
+      this.getPokemonInfo();
+    }
+  }
+
   buscar(event) {
     let q = event.currentTarget.value.toLowerCase();
     let filtrados = this.state.pokemones.filter((pokemon) => {
@@ -47,16 +59,15 @@ class List extends Component {
     //console.log(resultados);
   }
 
-  getPokemonInfo(name) {
+  getPokemonInfo() {
     const BASE_URL = "https://pokeapi.co/api/v2/";
 
     axios
-      .get(`${BASE_URL}pokemon/${name}`)
+      .get(`${BASE_URL}pokemon/${this.state.namePokemon}`)
       .then((response) => {
-        console.log("respuesta POKEAPI", response);
         // Esto es destructuring 👇🏽
         const { data } = response;
-        console.log("data", data);
+        // console.log("data", data);
         this.setState({ pokemonInfo: data });
       })
       .catch((error) => {
@@ -115,6 +126,7 @@ class List extends Component {
                   <button onClick={this.agua} className="button is-link">
                     Ver pokemones AGUA
                   </button>
+                  Nombre temporal: {this.state.namePokemon}
                   <div className="columns is-multiline">
                     {this.state.resultados.map((pokemon) => {
                       return (
@@ -123,7 +135,7 @@ class List extends Component {
                           image={pokemon.ThumbnailImage}
                           name={pokemon.name}
                           getPokemon={(namePokemon) =>
-                            this.getPokemonInfo(namePokemon)
+                            this.setState({ namePokemon })
                           }
                         />
                       );
