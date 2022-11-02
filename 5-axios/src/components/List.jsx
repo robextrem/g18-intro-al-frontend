@@ -101,7 +101,10 @@ class List extends Component {
         <div className="columns is-multiline">
           {/* CONDITIONAL RENDERING */}
           {Object.values(this.state.pokemonInfo).length > 0 ? (
-            <PokemonDetail detail={this.state.pokemonInfo} />
+            <PokemonDetail
+              detail={this.state.pokemonInfo}
+              cleanPokemonDetail={() => this.setState({ pokemonInfo: {} })}
+            />
           ) : (
             <>
               {this.state.resultados.length > 0 && (

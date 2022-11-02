@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 
 export default class PokemonDetail extends Component {
+  componentWillUnmount() {
+    alert("se destruye componente");
+  }
+
   render() {
     const {
-      detail: { name, height, weight },
+      detail: { name, height, weight, moves },
     } = this.props;
 
     return (
@@ -20,10 +24,7 @@ export default class PokemonDetail extends Component {
           ))}
         </ul>{" "}
         <br />
-        <button onClick={() => console.log("simular hacia atras")}>
-          {" "}
-          Atrás
-        </button>
+        <button onClick={() => this.props.cleanPokemonDetail()}>Atrás</button>
       </div>
     );
   }
