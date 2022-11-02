@@ -89,7 +89,19 @@ class List extends Component {
         <div className="columns is-multiline">
           {/* CONDITIONAL RENDERING */}
           {Object.values(this.state.pokemonInfo).length > 0 ? (
-            <h4>Debe de mostrar la info de mi pokemon</h4>
+            <div>
+              <p> Nombre: {this.state.pokemonInfo.name} </p>
+              <p> Altura: {this.state.pokemonInfo.height}</p>
+              <p>Peso: {this.state.pokemonInfo.weight} </p>
+              {/* Mostrar los primeros 5 moves en una lista */}
+              <ul>
+                {this.state.pokemonInfo.moves.slice(0, 5).map((element, i) => (
+                  <li key={i}>
+                    Movimiento {i + 1}: {element.move.name}{" "}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ) : (
             <>
               {this.state.resultados.length > 0 && (
