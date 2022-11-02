@@ -1,13 +1,18 @@
 import { useState } from "react";
-
 import "./App.css";
 
 const App = () => {
   const [user, setUser] = useState("");
   const [passsword, setPassword] = useState("");
 
-  const handleInputValue = ({ target: { value } }) => {
+  const handleInputValue = ({ target: { value, name } }) => {
+    name === "user" ? setUser(value) : setPassword(value);
+  };
+
+  const handleInputPassword = ({ target: { value, name } }) => {
     console.log("valor ", value);
+    console.log("name P ", name);
+    setPassword(value);
   };
 
   // user === 'usuarioG18' & password === '12345'
@@ -19,7 +24,12 @@ const App = () => {
         {/* USER */}
         <div style={{ margin: 10 }}>
           <label htmlFor="">Usuario:</label>
-          <input type="text" value={user} />
+          <input
+            type="text"
+            name="user"
+            onChange={handleInputValue}
+            value={user}
+          />
         </div>
 
         {/* PASSWORD */}
@@ -27,8 +37,9 @@ const App = () => {
           <label htmlFor="">Password: </label>
           <input
             type="password"
+            name="password"
             value={passsword}
-            onChange={handleInputValue}
+            onChange={handleInputPassword}
           />
         </div>
 
