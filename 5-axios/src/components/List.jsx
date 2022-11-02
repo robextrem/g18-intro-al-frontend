@@ -1,6 +1,7 @@
 import { Component } from "react";
 import axios from "axios";
 import Pokemon from "./Pokemon";
+import PokemonDetail from "./PokemonDetail";
 
 class List extends Component {
   state = {
@@ -100,25 +101,7 @@ class List extends Component {
         <div className="columns is-multiline">
           {/* CONDITIONAL RENDERING */}
           {Object.values(this.state.pokemonInfo).length > 0 ? (
-            <div>
-              <p> Nombre: {this.state.pokemonInfo.name} </p>
-              <p> Altura: {this.state.pokemonInfo.height}</p>
-              <p>Peso: {this.state.pokemonInfo.weight} </p>
-              {/* Mostrar los primeros 5 moves en una lista */}
-              <ul>
-                {this.state.pokemonInfo.moves.slice(0, 5).map((element, i) => (
-                  <li key={i}>
-                    Movimiento {i + 1}: {element.move.name}{" "}
-                  </li>
-                ))}
-              </ul>
-
-              <br />
-              <button onClick={() => this.setState({ pokemonInfo: {} })}>
-                {" "}
-                Atrás
-              </button>
-            </div>
+            <PokemonDetail detail={this.state.pokemonInfo} />
           ) : (
             <>
               {this.state.resultados.length > 0 && (
@@ -126,7 +109,7 @@ class List extends Component {
                   <button onClick={this.agua} className="button is-link">
                     Ver pokemones AGUA
                   </button>
-                  Nombre temporal: {this.state.namePokemon}
+
                   <div className="columns is-multiline">
                     {this.state.resultados.map((pokemon) => {
                       return (
