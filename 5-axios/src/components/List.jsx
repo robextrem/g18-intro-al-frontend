@@ -101,6 +101,12 @@ class List extends Component {
                   </li>
                 ))}
               </ul>
+
+              <br />
+              <button onClick={() => this.setState({ pokemonInfo: {} })}>
+                {" "}
+                Atrás
+              </button>
             </div>
           ) : (
             <>
