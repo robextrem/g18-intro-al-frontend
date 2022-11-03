@@ -1,5 +1,14 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import InputAdornment from "@mui/material/InputAdornment";
+import LockIcon from "@mui/icons-material/Lock";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+
+import CardContent from "@mui/material/CardContent";
+
 import "./App.css";
 import Dashboard from "./components/Dashboard";
 
@@ -42,41 +51,62 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <>
       {isUserActive ? (
         <Dashboard logout={() => setisUserActive(false)} />
       ) : (
-        <>
-          <h3>Login app fake 🤡</h3>
+        <div className="App">
+          <Card className="card-login" variant="outlined">
+            <CardContent>
+              <div>
+                <h3>Login app fake 🤡</h3>
+                {/* USER */}
+                <div style={{ margin: 10 }}>
+                  <TextField
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <AccountCircle />
+                        </InputAdornment>
+                      ),
+                    }}
+                    id="outlined-basic"
+                    label="User"
+                    variant="outlined"
+                    name="user"
+                    onChange={handleInputValue}
+                    value={credentials.user || ""}
+                  />
+                </div>
 
-          <div>
-            {/* USER */}
-            <div style={{ margin: 10 }}>
-              <label htmlFor="">Usuario:</label>
-              <input
-                type="text"
-                name="user"
-                onChange={handleInputValue}
-                value={credentials.user || ""}
-              />
-            </div>
-
-            {/* PASSWORD */}
-            <div style={{ margin: 10 }}>
-              <label htmlFor="">Password: </label>
-              <input
-                type="password"
-                name="password"
-                value={credentials.password || ""}
-                onChange={handleInputValue}
-              />
-            </div>
-
-            <button onClick={() => submitForm()}> Enviar</button>
-          </div>
-        </>
+                {/* PASSWORD */}
+                <div style={{ margin: 10 }}>
+                  <TextField
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <LockIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                    type="password"
+                    label="Password"
+                    name="password"
+                    variant="outlined"
+                    onChange={handleInputValue}
+                    value={credentials.password || ""}
+                  />
+                </div>
+                <Button variant="contained" onClick={() => submitForm()}>
+                  {" "}
+                  Enviar
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
