@@ -22,15 +22,17 @@ export default function Dashboard() {
     // PROMESA THEN CATCH 👉🏽 axios.get(`${BASE_URL}people`).then().catch()
   }, []);
 
-  // quiero visualizar en un console.log cada que cambie el estado charactersArray  👀
   useEffect(() => {
     console.log("cambia estado", charactersArray);
   }, [charactersArray]);
 
+  // Poner botón de Logout y sacarte del dashboard
+  // para renderizar otra vez el Login
+
   return (
     <>
       <h4>Dashboard</h4>
-
+      <button>Logout</button>
       <h5>Lista de personajes </h5>
       {charactersArray.map((element, i) => (
         <div key={i}>
