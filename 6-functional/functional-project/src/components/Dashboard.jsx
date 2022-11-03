@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Button from "@mui/material/Button";
 
-export default function Dashboard() {
+export default function Dashboard({ logout }) {
+  // props.logout
+
   const [charactersArray, setCharactersArray] = useState([]);
 
   useEffect(() => {
@@ -32,7 +35,10 @@ export default function Dashboard() {
   return (
     <>
       <h4>Dashboard</h4>
-      <button>Logout</button>
+      <Button onClick={() => logout()} variant="outlined">
+        Logout
+      </Button>
+
       <h5>Lista de personajes </h5>
       {charactersArray.map((element, i) => (
         <div key={i}>

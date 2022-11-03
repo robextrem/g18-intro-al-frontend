@@ -44,7 +44,7 @@ const App = () => {
   return (
     <div className="App">
       {isUserActive ? (
-        <Dashboard />
+        <Dashboard logout={() => setisUserActive(false)} />
       ) : (
         <>
           <h3>Login app fake 🤡</h3>
