@@ -1,35 +1,18 @@
 import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
+import Dashboard from "./components/Dashboard";
+import Login from "./components/Login";
 
 function App() {
   return (
     <Routes>
-      <Router>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/users">Users</Link>
-              </li>
-            </ul>
-          </nav>
+      <Route path="/" element={<Login />} />
+      {/* IMPORTANTE poner  👉🏽 / */}
+      <Route path="/main-dashboard" element={<Dashboard />} />
 
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-          <Switch>
-            <Route path="/about">About</Route>
-            <Route path="/users">Users</Route>
-            <Route path="/">Home</Route>
-          </Switch>
-        </div>
-      </Router>
+      {/* pagina 404 */}
+      <Route path="*" element={<h3> Page not found 404 </h3>} />
     </Routes>
   );
 }
